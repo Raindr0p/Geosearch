@@ -1,0 +1,2 @@
+void initFormula( string f )要求输入整系数而且绝对值不大于10(最高二次方程，不接受反比例函数）
+

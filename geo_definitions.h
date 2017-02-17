@@ -1,5 +1,6 @@
 class point {
 public:
+    
 	void initPoint( double x_value, double y_value )
 	{
 		x	= x_value;
@@ -27,8 +28,8 @@ private:
 
 class formula {
 public:
-	void initFormula( string f )
-	{
+	void initFormula( string f ){
+        power=2;
 		f.append( "#" );
 		strcpy( arr, f.c_str() );
 		if ( arr[0] == 'y' && arr[1] == '=' )
@@ -70,11 +71,23 @@ public:
 			}
 		}     else cout << "The formula can not be initialized.";
 	}
-
+    void initFormula(double c2,double c1,double ac){
+        power=2;
+        coefficient1=c1;
+        coefficient2=c2;
+        algebraic_coefficient=ac;
+    }
+    void initFormula(double cinverse){
+       power=-1;
+       inverse_coffcient=cinverse;
+    }
    void printFormula(){
+       if(power==-1)
+       cout<<"("<<inverse_coffcient<<")x^-1"<<endl;
+       else
        cout<<"("<<coefficient2<<")"<<"x^2+("<<coefficient1<<")x"<<"+("<<algebraic_coefficient<<")"<<endl;
    }
 private:
 			char arr[50];
-		int coefficient1, coefficient2, algebraic_coefficient;
+		double coefficient1, coefficient2, algebraic_coefficient,power,inverse_coffcient;
 	};
