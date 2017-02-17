@@ -1,13 +1,11 @@
 class point {
 public:
     
-	void initPoint( double x_value, double y_value )
-	{
+	void initPoint( double x_value, double y_value ){
 		x	= x_value;
 		y	= y_value;
 	};
-	void printPointPos()
-	{
+	void printPointPos(){
 		cout << "(" << x << "," << y << ")" << endl;
 	}
 
@@ -81,13 +79,14 @@ public:
        power=-1;
        inverse_coffcient=cinverse;
     }
-   void printFormula(){
+    void printFormula(){
        if(power==-1)
        cout<<"("<<inverse_coffcient<<")x^-1"<<endl;
        else
        cout<<"("<<coefficient2<<")"<<"x^2+("<<coefficient1<<")x"<<"+("<<algebraic_coefficient<<")"<<endl;
-   }
+    }
+
 private:
-			char arr[50];
+		char arr[50];
 		double coefficient1, coefficient2, algebraic_coefficient,power,inverse_coffcient;
 	};
