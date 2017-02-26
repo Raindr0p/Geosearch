@@ -7,7 +7,7 @@ int main(){
       a.initFormula("y=-3x^2-2x-3");
       b.initFormula(-3,2,1);
       c.initFormula(3);
-      a.printFormula();
+        a.printFormula(); 
       b.printFormula();
       c.printFormula();
 }
