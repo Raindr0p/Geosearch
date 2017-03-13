@@ -1,3 +1,6 @@
-void initFormula( string f )要求输入整系数而且绝对值不大于10(最高次数不高于二次不低于一次，不接受反比例函数）
-void initFormula(double c2,double c1,double ac)可接受非整系数，最高次数不高于二次不低于一次的方程
-void initFormula(double cinverse) 专门接受反比例函数
+目前给出的定义：
+mathObject-顶层类
+point-点
+formula-方程
+line-直线
+linearPair-直线对 
