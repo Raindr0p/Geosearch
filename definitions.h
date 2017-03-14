@@ -1,5 +1,6 @@
 #ifndef DFNS
 #define DFNS
+#include <cmath>
 #include <iostream>
 using namespace std;
 #endif
@@ -171,4 +172,15 @@ public:
       os << " 0 ";
     return os;
   }
+};
+
+class csqrt : public mathObject {
+public:
+  double a;
+  csqrt(double num) { a = num; }
+  friend ostream &operator<<(ostream &os, const csqrt &a) {
+    cout << " √(" << a.a << ") ";
+    return os;
+  }
+  double getValue() { return sqrt(a); }
 };
