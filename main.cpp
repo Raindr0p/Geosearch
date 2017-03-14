@@ -7,12 +7,14 @@ int main() {
   A.initPoint(1, 2);
   B.initPoint(0, 0);
   C.initPoint(1, 3);
-  line a, b;
 
+  line a, b;
   a.initLine(A, B);
   b.initLine(C, B);
 
   linearPair alp;
   alp.initLP(a, b);
-  cout << alp;
+
+  frac f(1.2, 1);
+  cout << f << endl;
 }

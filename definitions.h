@@ -1,5 +1,5 @@
-#ifndef GEO_DFNS
-#define GEO_DFNS
+#ifndef DFNS
+#define DFNS
 #include <iostream>
 using namespace std;
 #endif
@@ -13,7 +13,9 @@ public:
     y = y_value;
   };
   friend ostream &operator<<(ostream &os, const point &a) {
-    os << "(" << a.x << "," << a.y << ")";
+    os << " "
+       << "(" << a.x << "," << a.y << ")"
+       << " ";
     return os;
   }
 
@@ -45,13 +47,19 @@ public:
   }
   friend ostream &operator<<(ostream &os, const formula &a) {
     if (a.power == -1)
-      os << "(" << a.ic << ")x^-1";
+      os << " "
+         << "(" << a.ic << ")x^-1"
+         << " ";
     else if (a.power == 1) {
-      os << "(" << a.c1 << ")x+(" << a.ac << ")";
+      os << " "
+         << "(" << a.c1 << ")x+(" << a.ac << ")"
+         << " ";
     } else if (a.power == 2) {
-      os << "(" << a.c2 << ")"
+      os << " "
+         << "(" << a.c2 << ")"
          << "x^2+(" << a.c1 << ")x"
-         << "+(" << a.ac << ")";
+         << "+(" << a.ac << ")"
+         << " ";
     }
     return os;
   }
@@ -91,7 +99,7 @@ public:
       return false;
   }
   friend ostream &operator<<(ostream &os, const line &a) {
-    os << a.analysis;
+    os << " " << a.analysis << " ";
     return os;
   }
 };
@@ -105,7 +113,62 @@ public:
   }
 
   friend ostream &operator<<(ostream &os, const linearPair &a) {
-    os << "<" << a.first << "," << a.second << ">";
+    os << " "
+       << "<" << a.first << "," << a.second << ">"
+       << " ";
+    return os;
+  }
+};
+
+class frac {
+  int getCommon(int ia, int ib) {
+    int temp;
+    int a = ia;
+    int b = ib;
+    if (a < b) {
+      temp = a;
+      a = b;
+      b = temp;
+    }
+    while (b != 0) {
+      temp = a % b;
+      a = b;
+      b = temp;
+    }
+    return a;
+  }
+  int nu, de; // The numerator and denominator
+
+public:
+  frac(double a, double b) {
+    int ia, ib;
+    ia = a * 10000000;
+    ib = b * 10000000;
+    if (b != 0) {
+      int gcd = getCommon(ia, ib);
+      ia /= gcd;
+      ib /= gcd;
+      nu = ia;
+      de = ib;
+    } else {
+      cerr << "Wrong Fraction!" << endl;
+      nu = 1;
+    }
+  }
+  double getValue() {
+    double res;
+    res = (double)nu / (double)de;
+    return res;
+  }
+  friend ostream &operator<<(ostream &os, const frac &a) {
+    int nu = a.nu;
+    int de = a.de;
+    if ((nu > 0 && de < 0) || (nu < 0 && de > 0))
+      os << " -" << abs(nu) << "/" << abs(de) << " ";
+    else if ((nu < 0 && de < 0) || (nu > 0 && de > 0))
+      os << " " << abs(nu) << "/" << abs(de) << " ";
+    else if (nu == 0)
+      os << " 0 ";
     return os;
   }
 };
