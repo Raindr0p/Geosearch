@@ -16,5 +16,7 @@ int main() {
   alp.initLP(a, b);
 
   frac f(1.2, 1);
-  cout << f << endl;
+
+  csqrt as(13);
+  cout << as.getValue() << endl;
 }
